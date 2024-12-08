@@ -1,0 +1,71 @@
+1.Copy the file from master node to worker node
+
+ANS: ansible dev -b -m copy -a "src=/home/ansible/sam.txt dest=/home/ansible
+
+2.move the file from master node to worker node
+
+ANS: ansible dev -b -m command -a "mv /home/ansible/sam.txt /home/ansible"
+
+3.Remove the file from worker node
+
+ANS:ansible dev -b -m file -a "state=absent name=sam.txt"
+
+4.change the directory in worker node
+
+ANS: ansible dev -m command -a " cd devops"
+
+5.create directory in worker node
+
+ANS:ansible dev -b -m file -a "state=directory name=task"
+
+6.Delete the directory in worker node
+
+ANS:ansible dev -b -m file -a "state=absent name=task"
+
+7.create the file in worker node
+
+ANS: ansible dev -b -m file -a "state=touch name=devops"
+
+8.delete the file in worker node
+
+ANS: ansible dev -b -m file -a "state=absent name=devops"
+
+9.create the file with worker node with 777 permision
+
+ANS: ansible dev -b -m file -a "state=touch name=tribes mode='777'"
+
+10.delete the file with worker node with permission 777
+
+ANS : ansible dev -b -m file -a "state=absent name=task mode ='777'"
+
+11.install git with the worker node.
+
+ANS: ansible dev -b -m yum -a "pkg=git state=installed"
+
+12.install docker in worker node
+
+ANS: ansible dev -b -m shell -a "sudo yum update -y
+sudo yum search docker
+sudo yum info docker
+sudo yum install -y docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+sudo systemctl status docker.service
+docker --version
+sudo yum install git -y
+sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version"
+
+13.pull the httpd image in worker node
+
+ANS:ansible dev -b -m shell -a "docker pull httpd"
+
+14.run the httpd image container in worker node
+
+ANS:  ansible dev -b -m shell -a "docker run -it -d --name webapp httpd"
+
+15.clone the github repsitory in worker node
+
+ANS: ansible dev -b -m shell -a "git clone https://github.com/nithishkarthick/webtech.git"
+
